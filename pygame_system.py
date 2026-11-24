@@ -26,7 +26,7 @@ def main():
         screen.blit(enn, [100, 400])
         pg.display.update()
         tmr += 1        
-        clock.tick(1)
+        clock.tick(10)  #フレームレートの設定　一秒間に何回回るか
 
 
 if __name__ == "__main__":
