@@ -25,6 +25,7 @@ def main():
             if event.type == pg.QUIT: return
 
         x = tmr%3200  # 時間の経過とともに増加する変数
+        kk_rct.move_ip((-1,0)) #演習課題１－１
         key_lst = pg.key.get_pressed() #練習１０　全キー状態の取得
         if key_lst[pg.K_UP]:  # 上矢印キーが押されたら
             kk_rct.move_ip((0, -1))  # 縦に-1動かす
@@ -33,7 +34,7 @@ def main():
         if key_lst[pg.K_LEFT]:  # 左矢印キーが押されたら
             kk_rct.move_ip((-1, 0))  # 横に-1動かす            
         if key_lst[pg.K_RIGHT]:  # 右矢印キーが押されたら
-            kk_rct.move_ip((+1, 0))  # 横に+1動かす
+            kk_rct.move_ip((+2, 0))  # 横に+1動かす 演習課題１－２
 
         screen.blit(bg_img, [-x, 0])  # 背景の横座標を -x にして左へ移動させる
         # screen.blit(bg_img, [-x + 1600, 0])  # 練習7：2枚目の背景を右隣にblit
