@@ -14,17 +14,32 @@ def main():
     tmr = 0
     kk_img = pg.image.load("fig/3.png")
     kk_img = pg.transform.flip(kk_img,True,False)
+    kk_rct = kk_img.get_rect()
+    kk_rct.center = 300, 200
+    
+
     
 
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        x = tmr  # 時間の経過とともに増加する変数
+        x = tmr%3200  # 時間の経過とともに増加する変数
+        key_lst = pg.key.get_pressed() #練習１０　全キー状態の取得
+        if key_lst[pg.K_UP]:  # 上矢印キーが押されたら
+            kk_rct.move_ip((0, -1))  # 縦に-1動かす
+        if key_lst[pg.K_DOWN]:  # 下矢印キーが押されたら
+            kk_rct.move_ip((0, +1))  # 縦に+1動かす
+        if key_lst[pg.K_LEFT]:  # 左矢印キーが押されたら
+            kk_rct.move_ip((-1, 0))  # 横に-1動かす            
+        if key_lst[pg.K_RIGHT]:  # 右矢印キーが押されたら
+            kk_rct.move_ip((+1, 0))  # 横に+1動かす
+
         screen.blit(bg_img, [-x, 0])  # 背景の横座標を -x にして左へ移動させる
-        screen.blit(bg_img, [-x + 1600, 0])  # 練習7：2枚目の背景を右隣にblit
+        # screen.blit(bg_img, [-x + 1600, 0])  # 練習7：2枚目の背景を右隣にblit
         screen.blit(bg_img2, [-x + 1600, 0])  #練習8
-        screen.blit(kk_img, [300, 200])  # 練習４こうかとんを描画
+        screen.blit(bg_img, [-x+3200, 0])  # 練習9
+        screen.blit(kk_img, kk_rct)
 
         pg.display.update()
         tmr += 1        
